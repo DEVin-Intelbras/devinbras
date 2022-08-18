@@ -1,3 +1,5 @@
+import PropTypes from 'prop-types';
+
 import { Card, ButtonOutline } from '@/components';
 
 import styles from './CardProduto.module.css';
@@ -11,11 +13,21 @@ export const CardProduto = ({ produto }) => {
 
           <p className={styles.name}>{produto.name}</p>
 
-          <strong className={styles.price}>{produto.price}</strong>
+          <strong className={styles.price}>
+            {`R$ ${produto.price.toFixed(2).replace('.', ',')}`}
+          </strong>
 
           <ButtonOutline>Ver detalhes</ButtonOutline>
         </div>
       </Card>
     </li>
   );
+};
+
+CardProduto.propTypes = {
+  produto: PropTypes.shape({
+    image: PropTypes.string.isRequired,
+    name: PropTypes.string.isRequired,
+    price: PropTypes.number.isRequired,
+  }),
 };
