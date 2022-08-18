@@ -1,18 +1,23 @@
-import PropTypes from 'prop-types';
+import PropTypes from "prop-types";
 
-import styles from './Button.module.css';
+import styles from "./Button.module.css";
 
-export const ButtonOutline = ({ children, fullWidth = false }) => {
+export const ButtonOutline = ({ children, fullWidth = false, link }) => {
   return (
-    <button
-      className={`${styles.button} ${styles.buttonOutline} ${fullWidth ? styles.fullWidth : ''}`}
+    <a
+      href={link}
+      target="_blank"
+      className={`${styles.button} ${styles.buttonOutline} ${
+        fullWidth ? styles.fullWidth : ""
+      }`}
     >
       {children}
-    </button>
+    </a>
   );
 };
 
 ButtonOutline.propTypes = {
   children: PropTypes.node.isRequired,
   fullWidth: PropTypes.bool,
+  link: PropTypes.string.isRequired,
 };

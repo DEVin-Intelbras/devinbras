@@ -1,14 +1,14 @@
-import './assets/css/app.css';
+import "./assets/css/app.css";
 
-import { Header, Footer } from '@/components';
-import { Products } from '@/pages';
+import { Header, Footer } from "@/components";
+import { Products } from "@/pages";
 
 export function App() {
   return (
-    <div className='app'>
+    <div className="app">
       <Header />
 
-      <main className='main'>
+      <main className="main">
         <Products />
       </main>
 

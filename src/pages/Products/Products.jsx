@@ -1,8 +1,8 @@
-import { Filters, ListaProdutos } from '@/components';
+import { Filters, ListaProdutos } from "@/components";
 
-import image from '@/assets/img/products.png';
+import image from "@/assets/img/products.png";
 
-import styles from './Products.module.css';
+import styles from "./Products.module.css";
 
 export const Products = () => {
   return (
@@ -11,7 +11,7 @@ export const Products = () => {
         <img
           className={styles.productsContentImg}
           src={image}
-          alt='Imagem contendo uma casa inteligente totalmente conectada, contendo os textos casa inteligente sem mistério e conheça a linha Izy'
+          alt="Imagem contendo uma casa inteligente totalmente conectada, contendo os textos casa inteligente sem mistério e conheça a linha Izy"
         />
       </section>
 
