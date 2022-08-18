@@ -24,6 +24,7 @@
 .productsList {
   background-color: var(--brand-green-light-02);
   padding-top: 150px;
+  padding-bottom: 25px;
 }
 
 .productsListTitle {
