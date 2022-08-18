@@ -1,0 +1,40 @@
+.containerFooter {
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+  align-items: center;
+  background-color: var(--brand-green);
+  padding: 70px 60px;
+}
+
+.sectionInfo {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.sectionInfoTitle {
+  color: var(--white);
+  font-size: 40px;
+  line-height: 52px;
+  font-weight: 400;
+}
+
+.sectionInfoDescription {
+  font-size: 14px;
+  line-height: 18px;
+  color: var(--brand-beige);
+}
+
+.sectionSocialMidia {
+  display: flex;
+  gap: 32px;
+}
+
+@media (max-width: 600px) {
+  .containerFooter {
+    flex-direction: column;
+    gap: 16px;
+    padding: 16px 24px;
+  }
+}

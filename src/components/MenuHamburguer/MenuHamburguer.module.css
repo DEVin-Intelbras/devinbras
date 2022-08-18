@@ -1,0 +1,17 @@
+.buttonHamburguer {
+  background-color: transparent;
+  border: 0;
+  cursor: pointer;
+}
+
+.hamburguer {
+  width: 35px;
+  height: 5px;
+  background-color: var(--white);
+  margin: 6px 0;
+  transition: 0.3s;
+}
+
+.buttonHamburguer:hover {
+  opacity: 0.5;
+}

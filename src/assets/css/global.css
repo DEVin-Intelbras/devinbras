@@ -1,0 +1,35 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+:root {
+  /* Variáveis com as cores do tema */
+  --brand-green: #00856f;
+  --brand-green-light: #dce9e2;
+  --brand-green-light-02: #f7f9f9;
+  --brand-beige: #fffaf1;
+  --brand-green-hover: #00453a;
+  --gray-headline: #212529;
+  --gray-paragraph: #495057;
+  --white: #ffffff;
+
+  /* Define fonte */
+  font-family: 'DM Sans', sans-serif;
+  font-size: 16px;
+  line-height: 24px;
+  font-weight: 400;
+
+  /* Define cores */
+  color: var(--gray-paragraph);
+  background-color: var(--brand-green-light);
+}
+
+body,
+#root {
+  margin: 0;
+  display: flex;
+  width: 100%;
+  min-height: 100vh;
+}

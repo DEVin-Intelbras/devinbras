@@ -1,0 +1,30 @@
+.ulContainer {
+  display: flex;
+  gap: 26px;
+  list-style: none;
+}
+
+.link {
+  font-size: 16px;
+  line-height: 21px;
+  color: var(--brand-green-light-02);
+  opacity: 0.6;
+  text-decoration: none;
+}
+
+.link:hover {
+  opacity: 1;
+}
+
+.linkActive {
+  opacity: 1;
+  font-weight: 700;
+  text-decoration: underline;
+  text-underline-offset: 4px;
+}
+
+@media (max-width: 600px) {
+  .ulContainer {
+    flex-direction: column;
+  }
+}

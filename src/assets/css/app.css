@@ -1,0 +1,11 @@
+.app {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  flex: 1;
+}
+
+.main {
+  /* display: flex;
+  flex: 1; */
+}

@@ -1,0 +1,19 @@
+.ul {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  padding: 40px 0;
+  gap: 40px;
+}
+
+.button {
+  display: flex;
+  flex: 1;
+  padding-bottom: 40px;
+}
+
+@media (max-width: 600px) {
+  .ul {
+    flex-direction: column;
+  }
+}
