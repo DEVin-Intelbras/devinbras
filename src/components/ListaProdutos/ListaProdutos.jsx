@@ -1,17 +1,9 @@
-import React, { useEffect, useState } from "react";
+import PropTypes from "prop-types";
 import { ButtonOutline, CardProduto } from "@/components";
 
 import styles from "./ListaProdutos.module.css";
 
-export const ListaProdutos = () => {
-  const [produtos, setProdutos] = useState([]);
-
-  useEffect(() => {
-    fetch("http://localhost:8081/products")
-      .then((res) => res.json())
-      .then((dados) => setProdutos(dados));
-  }, []);
-
+export const ListaProdutos = ({ produtos }) => {
   return (
     <>
       <ul className={styles.ul}>
@@ -21,8 +13,22 @@ export const ListaProdutos = () => {
       </ul>
 
       <div className={styles.button}>
-        <ButtonOutline fullWidth>Mostrar mais...</ButtonOutline>
+        <ButtonOutline fullWidth link="#">
+          Mostrar mais...
+        </ButtonOutline>
       </div>
     </>
   );
+};
+
+ListaProdutos.propTypes = {
+  produtos: PropTypes.arrayOf(
+    PropTypes.shape({
+      id: PropTypes.number.isRequired,
+      name: PropTypes.string.isRequired,
+      price: PropTypes.number.isRequired,
+      image: PropTypes.string.isRequired,
+      details: PropTypes.string.isRequired,
+    })
+  ),
 };
