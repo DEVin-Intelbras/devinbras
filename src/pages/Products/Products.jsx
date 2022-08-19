@@ -7,12 +7,25 @@ import styles from "./Products.module.css";
 
 export const Products = () => {
   const [produtos, setProdutos] = useState([]);
+  const [filtro, setFiltro] = useState(null);
 
   useEffect(() => {
     fetch("http://localhost:8081/products")
       .then((res) => res.json())
       .then((dados) => setProdutos(dados));
   }, []);
+
+  const produtosFiltrados = filtro
+    ? produtos.filter((produto) => produto.category === filtro)
+    : produtos;
+
+  const handleFiltrar = (categoria) => {
+    if (filtro === categoria) {
+      setFiltro(null);
+    } else {
+      setFiltro(categoria);
+    }
+  };
 
   return (
     <div className={styles.productsContainer}>
@@ -24,15 +37,16 @@ export const Products = () => {
         />
       </section>
 
-      <Filters />
+      <Filters aoFiltrar={handleFiltrar} />
 
       <section className={`${styles.productsContent} ${styles.productsList}`}>
         <h2 className={styles.productsListTitle}>Produtos</h2>
+        {filtro ? <span>(filtrado por: {filtro})</span> : null}
 
         {produtos.length === 0 ? (
           <p>Carregando produtos...</p>
         ) : (
-          <ListaProdutos produtos={produtos} />
+          <ListaProdutos produtos={produtosFiltrados} />
         )}
       </section>
     </div>
