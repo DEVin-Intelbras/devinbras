@@ -1,9 +1,17 @@
-import { produtos } from '@/service/produtos';
-import { ButtonOutline, CardProduto } from '@/components';
+import React, { useEffect, useState } from "react";
+import { ButtonOutline, CardProduto } from "@/components";
 
-import styles from './ListaProdutos.module.css';
+import styles from "./ListaProdutos.module.css";
 
 export const ListaProdutos = () => {
+  const [produtos, setProdutos] = useState([]);
+
+  useEffect(() => {
+    fetch("http://localhost:8081/products")
+      .then((res) => res.json())
+      .then((dados) => setProdutos(dados));
+  }, []);
+
   return (
     <>
       <ul className={styles.ul}>

@@ -10,7 +10,7 @@ export const CardProduto = ({ produto }) => {
       <Card>
         <div className={styles.container}>
           <img
-            src={produto.image}
+            src={`assets/products/${produto.image}`}
             alt="Imagem do produto"
             width={149}
             height={149}
