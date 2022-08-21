@@ -20,7 +20,10 @@ export const useProdutos = () => {
         setProdutos(dados);
         setStatus(statusType.isComplete);
       })
-      .catch((err) => console.dir(err));
+      .catch((err) => {
+        console.log(err.message);
+        setStatus(statusType.isError);
+      });
   }, []);
 
   const produtosFiltrados = filtro
