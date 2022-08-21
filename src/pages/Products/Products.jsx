@@ -1,9 +1,8 @@
-import { Filters, ListaProdutos } from "@/components";
+import { Filters, ListaProdutos, Loader, CardMensagem } from "@/components";
+import { useProdutos, statusType } from "@hooks/useProdutos";
 
 import image from "@/assets/img/products.png";
-
 import styles from "./Products.module.css";
-import { useProdutos, statusType } from "@hooks/useProdutos";
 
 export const Products = () => {
   const { status, produtos, filtro, handleFiltrar } = useProdutos();
@@ -22,12 +21,10 @@ export const Products = () => {
 
       <section className={`${styles.productsContent} ${styles.productsList}`}>
         <h2 className={styles.productsListTitle}>Produtos</h2>
-        {filtro ? <span>(filtrado por: {filtro})</span> : null}
-
-        {status === statusType.isLoading ? (
-          <p>Carregando produtos...</p>
-        ) : (
-          <ListaProdutos produtos={produtos} />
+        {status === statusType.isLoading && <Loader />}
+        {status === statusType.isComplete && <ListaProdutos produtos={produtos} />}
+        {status === statusType.isError && (
+          <CardMensagem titulo="Erro!" mensagem="Erro ao carregar os produtos" tipo="aviso" />
         )}
       </section>
     </div>
