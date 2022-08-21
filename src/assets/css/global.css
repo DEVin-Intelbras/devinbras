@@ -15,8 +15,12 @@
   --gray-paragraph: #495057;
   --white: #ffffff;
 
+  --brand-color-error: #b3192c;
+  --brand-color-warn: #e69a41;
+  --brand-color-info: #007fbc;
+
   /* Define fonte */
-  font-family: 'DM Sans', sans-serif;
+  font-family: "DM Sans", sans-serif;
   font-size: 16px;
   line-height: 24px;
   font-weight: 400;
