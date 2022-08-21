@@ -3,10 +3,11 @@
     "baseUrl": "./src",
     "paths": {
       "@/*": ["./src/*"],
-      "@/assets/*": ["./src/assets"],
-      "@/components/*": ["./src/components"],
-      "@/pages/*": ["./src/pages"],
-      "@/service/*": ["./src/service"]
+      "@assets/*": ["./src/assets"],
+      "@hooks/*": ["./src/hooks"],
+      "@components/*": ["./src/components"],
+      "@pages/*": ["./src/pages"],
+      "@service/*": ["./src/service"]
     }
   },
   "include": ["src"]
