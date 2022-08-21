@@ -8,3 +8,4 @@ export * from "./ListaProdutos";
 export * from "./Navbar";
 export * from "./MenuHamburguer";
 export * from "./Loader";
+export * from "./CardMensagem";
