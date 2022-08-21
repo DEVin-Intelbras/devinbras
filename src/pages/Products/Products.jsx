@@ -1,31 +1,12 @@
-import { useEffect, useState } from "react";
 import { Filters, ListaProdutos } from "@/components";
 
 import image from "@/assets/img/products.png";
 
 import styles from "./Products.module.css";
+import { useProdutos, statusType } from "@hooks/useProdutos";
 
 export const Products = () => {
-  const [produtos, setProdutos] = useState([]);
-  const [filtro, setFiltro] = useState(null);
-
-  useEffect(() => {
-    fetch("http://localhost:8081/products")
-      .then((res) => res.json())
-      .then((dados) => setProdutos(dados));
-  }, []);
-
-  const produtosFiltrados = filtro
-    ? produtos.filter((produto) => produto.category === filtro)
-    : produtos;
-
-  const handleFiltrar = (categoria) => {
-    if (filtro === categoria) {
-      setFiltro(null);
-    } else {
-      setFiltro(categoria);
-    }
-  };
+  const { status, produtos, filtro, handleFiltrar } = useProdutos();
 
   return (
     <div className={styles.productsContainer}>
@@ -43,10 +24,10 @@ export const Products = () => {
         <h2 className={styles.productsListTitle}>Produtos</h2>
         {filtro ? <span>(filtrado por: {filtro})</span> : null}
 
-        {produtos.length === 0 ? (
+        {status === statusType.isLoading ? (
           <p>Carregando produtos...</p>
         ) : (
-          <ListaProdutos produtos={produtosFiltrados} />
+          <ListaProdutos produtos={produtos} />
         )}
       </section>
     </div>
