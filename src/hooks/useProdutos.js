@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { produtoService } from "@service/api/produtos-http-service";
 
 export const statusType = {
   isLoading: "loading",
@@ -14,14 +15,14 @@ export const useProdutos = () => {
 
   useEffect(() => {
     setStatus(statusType.isLoading);
-    fetch("http://localhost:8081/products")
-      .then((res) => res.json())
+    produtoService
+      .buscarProdutos()
       .then((dados) => {
         setProdutos(dados);
         setStatus(statusType.isComplete);
       })
       .catch((err) => {
-        console.log(err.message);
+        console.log(err);
         setStatus(statusType.isError);
       });
   }, []);
