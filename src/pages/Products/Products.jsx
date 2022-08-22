@@ -24,7 +24,7 @@ export const Products = () => {
         {status === statusType.isLoading && <Loader />}
         {status === statusType.isComplete && <ListaProdutos produtos={produtos} />}
         {status === statusType.isError && (
-          <CardMensagem titulo="Erro!" mensagem="Erro ao carregar os produtos" tipo="aviso" />
+          <CardMensagem titulo="Erro!" mensagem="Erro ao carregar os produtos" tipo="erro" />
         )}
       </section>
     </div>
