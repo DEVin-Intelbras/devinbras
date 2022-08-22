@@ -5,6 +5,10 @@ import { Card, ButtonOutline } from "@components";
 import styles from "./CardProduto.module.css";
 
 export const CardProduto = ({ produto }) => {
+  const handleOpen = () => {
+    window.open(`https://loja.intelbras.com.br/${produto.details}`, "_blank");
+  };
+
   return (
     <li className={styles.li}>
       <Card>
@@ -22,11 +26,7 @@ export const CardProduto = ({ produto }) => {
             {`R$ ${produto.price.toFixed(2).replace(".", ",")}`}
           </strong>
 
-          <ButtonOutline
-            link={`https://loja.intelbras.com.br/${produto.details}`}
-          >
-            Ver detalhes
-          </ButtonOutline>
+          <ButtonOutline onClick={handleOpen}>Ver detalhes</ButtonOutline>
         </div>
       </Card>
     </li>
