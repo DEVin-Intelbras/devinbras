@@ -14,10 +14,7 @@ import styles from "./Filters.module.css";
 export const Filters = ({ aoFiltrar }) => {
   return (
     <section className={styles.filter}>
-      <div
-        className={styles.filterGroup}
-        onClick={() => aoFiltrar("segurança eletrônica")}
-      >
+      <div className={styles.filterGroup} onClick={() => aoFiltrar("segurança eletrônica")}>
         <Seguranca />
         <p className={styles.filterDetail}>Segurança Eletrônica</p>
       </div>
@@ -25,17 +22,11 @@ export const Filters = ({ aoFiltrar }) => {
         <Redes />
         <p className={styles.filterDetail}>Redes</p>
       </div>
-      <div
-        className={styles.filterGroup}
-        onClick={() => aoFiltrar("comunicação")}
-      >
+      <div className={styles.filterGroup} onClick={() => aoFiltrar("comunicação")}>
         <Comunicacao />
         <p className={styles.filterDetail}>Comunicação</p>
       </div>
-      <div
-        className={styles.filterGroup}
-        onClick={() => aoFiltrar("energia solar")}
-      >
+      <div className={styles.filterGroup} onClick={() => aoFiltrar("energia solar")}>
         <EnergiaSolar />
         <p className={styles.filterDetail}>Energia Solar</p>
       </div>
@@ -43,10 +34,7 @@ export const Filters = ({ aoFiltrar }) => {
         <Energia />
         <p className={styles.filterDetail}>Energia</p>
       </div>
-      <div
-        className={styles.filterGroup}
-        onClick={() => aoFiltrar("controle de acesso")}
-      >
+      <div className={styles.filterGroup} onClick={() => aoFiltrar("controle de acesso")}>
         <ControleAcesso />
         <p className={styles.filterDetail}> Controle de Acesso</p>
       </div>

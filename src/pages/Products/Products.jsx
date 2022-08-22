@@ -5,7 +5,7 @@ import image from "@/assets/img/products.png";
 import styles from "./Products.module.css";
 
 export const Products = () => {
-  const { status, produtos, filtro, handleFiltrar } = useProdutos();
+  const { status, produtos, handleFiltrar } = useProdutos();
 
   return (
     <div className={styles.productsContainer}>

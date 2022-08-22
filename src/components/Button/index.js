@@ -1,2 +1,2 @@
-export * from './ButtonOutline';
-export * from './ButtonSecondary';
+export { ButtonOutline } from "./ButtonOutline";
+export { ButtonSecondary } from "./ButtonSecondary";

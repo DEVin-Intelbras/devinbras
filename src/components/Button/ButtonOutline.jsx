@@ -7,9 +7,8 @@ export const ButtonOutline = ({ children, fullWidth = false, link }) => {
     <a
       href={link}
       target="_blank"
-      className={`${styles.button} ${styles.buttonOutline} ${
-        fullWidth ? styles.fullWidth : ""
-      }`}
+      rel="noreferrer"
+      className={`${styles.button} ${styles.buttonOutline} ${fullWidth ? styles.fullWidth : ""}`}
     >
       {children}
     </a>

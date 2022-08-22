@@ -6,8 +6,8 @@ const get = (resource) => {
   return fetch(URL.concat(resource), { method: "GET" }).then(handleResponse).catch(handleError);
 };
 
-const post = () => {
-  return fetch(URL.concat(resource, data), {
+const post = (resource, data) => {
+  return fetch(URL.concat(resource), {
     method: "POST",
     body: JSON.stringify(data),
     headers: { "Content-Type": "application/json", Accept: "application/json" },
