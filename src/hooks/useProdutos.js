@@ -43,5 +43,6 @@ export const useProdutos = () => {
     produtos: produtosFiltrados,
     handleFiltrar,
     status,
+    filtro,
   };
 };

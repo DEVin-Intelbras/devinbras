@@ -5,7 +5,7 @@ import image from "@/assets/img/products.png";
 import styles from "./Products.module.css";
 
 export const Products = () => {
-  const { status, produtos, handleFiltrar } = useProdutos();
+  const { status, produtos, handleFiltrar, filtro } = useProdutos();
 
   return (
     <div className={styles.productsContainer}>
@@ -17,7 +17,7 @@ export const Products = () => {
         />
       </section>
 
-      <Filters aoFiltrar={handleFiltrar} />
+      <Filters aoFiltrar={handleFiltrar} filtroSelecionado={filtro} />
 
       <section className={`${styles.productsContent} ${styles.productsList}`}>
         <h2 className={styles.productsListTitle}>Produtos</h2>

@@ -26,12 +26,24 @@
   align-items: center;
   justify-content: center;
   gap: 16px;
+  cursor: pointer;
+  width: 100px;
+}
+
+.filterGroupSelected {
+  filter: brightness(0.8);
 }
 
 .filterDetail {
-  font-weight: 500;
+  font-weight: 400;
   text-align: center;
   line-height: 24px;
+  min-height: 48px;
+  color: var(--gray-paragraph);
+}
+
+.filterDetailSelected {
+  font-weight: 500;
 }
 
 @media (max-width: 600px) {
