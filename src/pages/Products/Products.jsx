@@ -6,7 +6,14 @@ import { imageProducts } from "@assets/img";
 import styles from "./Products.module.css";
 
 export const Products = () => {
-  const { status, produtos, handleFiltrar, filtro, totalProdutos, handleVerMais } = useProdutos();
+  const {
+    status,
+    produtos,
+    handleFiltrar,
+    filtro,
+    totalProdutos,
+    handleVerMais,
+  } = useProdutos();
 
   return (
     <div className={styles.productsContainer}>
@@ -41,7 +48,11 @@ export const Products = () => {
         )}
 
         {status === statusType.isError && (
-          <CardMensagem titulo="Erro!" mensagem="Erro ao carregar os produtos" tipo="erro" />
+          <CardMensagem
+            titulo="Erro!"
+            mensagem="Erro ao carregar os produtos"
+            tipo="erro"
+          />
         )}
       </section>
     </div>

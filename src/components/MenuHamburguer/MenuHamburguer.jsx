@@ -1,6 +1,6 @@
-import PropTypes from 'prop-types';
+import PropTypes from "prop-types";
 
-import styles from './MenuHamburguer.module.css';
+import styles from "./MenuHamburguer.module.css";
 
 export const MenuHamburguer = ({ onClick }) => (
   <button className={styles.buttonHamburguer} onClick={onClick}>

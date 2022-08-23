@@ -52,12 +52,18 @@ export const Filters = ({ aoFiltrar, filtroSelecionado }) => (
       return (
         <div
           key={filter.value}
-          className={`${styles.filterGroup} ${selected ? styles.filterGroupSelected : ""}`}
+          className={`${styles.filterGroup} ${
+            selected ? styles.filterGroupSelected : ""
+          }`}
           onClick={() => aoFiltrar(filter.value)}
         >
           {filter.icon}
 
-          <p className={`${styles.filterDetail} ${selected ? styles.filterDetailSelected : ""}`}>
+          <p
+            className={`${styles.filterDetail} ${
+              selected ? styles.filterDetailSelected : ""
+            }`}
+          >
             {filter.label}
           </p>
         </div>

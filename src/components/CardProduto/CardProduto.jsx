@@ -22,9 +22,9 @@ export const CardProduto = ({ produto }) => {
 
           <p className={styles.name}>{produto.name}</p>
 
-          <strong className={styles.price}>
-            {`R$ ${produto.price.toFixed(2).replace(".", ",")}`}
-          </strong>
+          <strong className={styles.price}>{`R$ ${produto.price
+            .toFixed(2)
+            .replace(".", ",")}`}</strong>
 
           <ButtonOutline onClick={handleOpen}>Ver detalhes</ButtonOutline>
         </div>

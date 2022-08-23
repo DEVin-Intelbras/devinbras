@@ -15,7 +15,9 @@ export const ButtonSecondary = ({
     <button
       onClick={onClick}
       disabled={disabled}
-      className={`${styles.button} ${styles.buttonSecondary} ${fullWidth ? styles.fullWidth : ""}`}
+      className={`${styles.button} ${styles.buttonSecondary} ${
+        fullWidth ? styles.fullWidth : ""
+      }`}
     >
       {isLoading && (
         <div>

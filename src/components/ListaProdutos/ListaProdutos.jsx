@@ -3,7 +3,12 @@ import { ButtonOutline, CardProduto } from "@components";
 
 import styles from "./ListaProdutos.module.css";
 
-export const ListaProdutos = ({ produtos, totalProdutos, onVerMais, isLoadingVerMais }) => {
+export const ListaProdutos = ({
+  produtos,
+  totalProdutos,
+  onVerMais,
+  isLoadingVerMais,
+}) => {
   const disabled = produtos.length >= totalProdutos || isLoadingVerMais;
 
   return (
@@ -36,7 +41,7 @@ ListaProdutos.propTypes = {
       price: PropTypes.number.isRequired,
       image: PropTypes.string.isRequired,
       details: PropTypes.string.isRequired,
-    })
+    }),
   ),
   totalProdutos: PropTypes.number.isRequired,
   onVerMais: PropTypes.func.isRequired,

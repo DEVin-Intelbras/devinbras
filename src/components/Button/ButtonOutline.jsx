@@ -15,7 +15,9 @@ export const ButtonOutline = ({
     <button
       onClick={onClick}
       disabled={disabled}
-      className={`${styles.button} ${styles.buttonOutline} ${fullWidth ? styles.fullWidth : ""}`}
+      className={`${styles.button} ${styles.buttonOutline} ${
+        fullWidth ? styles.fullWidth : ""
+      }`}
     >
       {isLoading && (
         <div>
