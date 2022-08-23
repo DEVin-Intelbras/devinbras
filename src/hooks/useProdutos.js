@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { produtoService } from "@service/api/produtos-http-service";
+import { produtoService } from "@service";
 
 export const statusType = {
   isLoading: "loading",

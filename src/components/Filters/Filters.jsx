@@ -5,7 +5,7 @@ import {
   EnergiaSolar,
   Redes,
   Seguranca,
-} from "@/assets/icons";
+} from "@assets/icons";
 
 import PropType from "prop-types";
 

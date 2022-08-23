@@ -1,6 +1,6 @@
-import { Facebook, Instagram, Youtube } from '@/assets/icons';
+import { Facebook, Instagram, Youtube } from "@assets/icons";
 
-import styles from './Footer.module.css';
+import styles from "./Footer.module.css";
 
 export const Footer = () => {
   return (

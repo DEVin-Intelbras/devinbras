@@ -1,6 +1,6 @@
 import PropTypes from "prop-types";
 
-import { Card } from "@components/Card";
+import { Card } from "@components";
 
 import styles from "./CardMensagem.module.css";
 

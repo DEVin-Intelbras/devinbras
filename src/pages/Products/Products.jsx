@@ -1,8 +1,8 @@
-import { Filters, ListaProdutos, Loader, CardMensagem } from "@/components";
-import { NotFound } from "@/assets/icons";
-import { useProdutos, statusType } from "@hooks/useProdutos";
+import { Filters, ListaProdutos, Loader, CardMensagem } from "@components";
+import { NotFound } from "@assets/icons";
+import { useProdutos, statusType } from "@hooks";
 
-import image from "@/assets/img/products.png";
+import { imageProducts } from "@assets/img";
 import styles from "./Products.module.css";
 
 export const Products = () => {
@@ -13,7 +13,7 @@ export const Products = () => {
       <section className={`${styles.productsContent} ${styles.header}`}>
         <img
           className={styles.productsContentImg}
-          src={image}
+          src={imageProducts}
           alt="Imagem contendo uma casa inteligente totalmente conectada, contendo os textos casa inteligente sem mistério e conheça a linha Izy"
         />
       </section>

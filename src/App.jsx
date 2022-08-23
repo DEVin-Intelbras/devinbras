@@ -1,7 +1,7 @@
 import "./assets/css/app.css";
 
-import { Header, Footer } from "@/components";
-import { Products } from "@/pages";
+import { Header, Footer } from "@components";
+import { Products } from "@pages";
 
 export function App() {
   return (

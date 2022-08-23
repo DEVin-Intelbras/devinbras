@@ -1,5 +1,5 @@
 import PropTypes from "prop-types";
-import { ButtonOutline, CardProduto } from "@/components";
+import { ButtonOutline, CardProduto } from "@components";
 
 import styles from "./ListaProdutos.module.css";
 

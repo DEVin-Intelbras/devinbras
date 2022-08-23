@@ -1,14 +1,16 @@
 {
   "compilerOptions": {
     "baseUrl": "./src",
+    "jsx": "react",
     "paths": {
-      "@/*": ["./src/*"],
-      "@assets/*": ["./src/assets"],
-      "@hooks/*": ["./src/hooks"],
-      "@components/*": ["./src/components"],
-      "@pages/*": ["./src/pages"],
-      "@service/*": ["./src/service"]
+      "@components": ["./components/index.js"],
+      "@assets/img": ["./assets/img/index.js"],
+      "@assets/css/*": ["./assets/css/*"],
+      "@assets/icons": ["./assets/icons/index.js"],
+      "@hooks": ["./hooks/index.js"],
+      "@pages": ["./pages/index.js"],
+      "@service": ["./service/index.js"]
     }
   },
-  "include": ["src"]
+  "include": ["./src"]
 }

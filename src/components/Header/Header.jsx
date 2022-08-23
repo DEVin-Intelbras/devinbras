@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 
-import { ButtonSecondary, Navbar, MenuHamburguer } from "@/components";
+import { ButtonSecondary, Navbar, MenuHamburguer } from "@components";
 
 import styles from "./Header.module.css";
 
