@@ -3,7 +3,9 @@ import { ButtonOutline, CardProduto } from "@/components";
 
 import styles from "./ListaProdutos.module.css";
 
-export const ListaProdutos = ({ produtos }) => {
+export const ListaProdutos = ({ produtos, totalProdutos, onVerMais, isLoadingVerMais }) => {
+  const disabled = produtos.length >= totalProdutos || isLoadingVerMais;
+
   return (
     <>
       <ul className={styles.ul}>
@@ -13,7 +15,12 @@ export const ListaProdutos = ({ produtos }) => {
       </ul>
 
       <div className={styles.button}>
-        <ButtonOutline fullWidth link="#">
+        <ButtonOutline
+          fullWidth
+          disabled={disabled}
+          onClick={onVerMais}
+          isLoading={isLoadingVerMais}
+        >
           Mostrar mais...
         </ButtonOutline>
       </div>
@@ -31,4 +38,7 @@ ListaProdutos.propTypes = {
       details: PropTypes.string.isRequired,
     })
   ),
+  totalProdutos: PropTypes.number.isRequired,
+  onVerMais: PropTypes.func.isRequired,
+  isLoadingVerMais: PropTypes.bool,
 };

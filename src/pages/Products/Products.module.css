@@ -33,6 +33,16 @@
   line-height: 21px;
   letter-spacing: 0.08em;
   color: var(--brand-green);
+  margin-bottom: 40px;
+}
+
+.notFound {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 400px;
+  width: 100%;
+  margin-bottom: 40px;
 }
 
 @media (max-width: 600px) {

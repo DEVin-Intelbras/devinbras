@@ -18,7 +18,10 @@ const post = (resource, data) => {
 
 const handleResponse = (res) => {
   if (res.ok) {
-    return res.json();
+    const data = res
+      .json()
+      .then((data) => ({ data, totalSize: parseInt(res.headers.get("X-Total-Count")) }));
+    return data;
   } else {
     throw new HttpError(res.status, "Não foi possível completar a requisição");
   }

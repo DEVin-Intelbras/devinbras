@@ -1,11 +1,12 @@
 import { Filters, ListaProdutos, Loader, CardMensagem } from "@/components";
+import { NotFound } from "@/assets/icons";
 import { useProdutos, statusType } from "@hooks/useProdutos";
 
 import image from "@/assets/img/products.png";
 import styles from "./Products.module.css";
 
 export const Products = () => {
-  const { status, produtos, handleFiltrar, filtro } = useProdutos();
+  const { status, produtos, handleFiltrar, filtro, totalProdutos, handleVerMais } = useProdutos();
 
   return (
     <div className={styles.productsContainer}>
@@ -21,8 +22,24 @@ export const Products = () => {
 
       <section className={`${styles.productsContent} ${styles.productsList}`}>
         <h2 className={styles.productsListTitle}>Produtos</h2>
-        {status === statusType.isLoading && <Loader />}
-        {status === statusType.isComplete && <ListaProdutos produtos={produtos} />}
+
+        {!produtos.length && status === statusType.isLoading && <Loader />}
+
+        {!produtos.length && status === statusType.isComplete && (
+          <div className={styles.notFound}>
+            <NotFound height={300} max-width="100%" />
+          </div>
+        )}
+
+        {!!produtos.length && (
+          <ListaProdutos
+            produtos={produtos}
+            totalProdutos={totalProdutos}
+            onVerMais={handleVerMais}
+            isLoadingVerMais={status === statusType.isLoading}
+          />
+        )}
+
         {status === statusType.isError && (
           <CardMensagem titulo="Erro!" mensagem="Erro ao carregar os produtos" tipo="erro" />
         )}
