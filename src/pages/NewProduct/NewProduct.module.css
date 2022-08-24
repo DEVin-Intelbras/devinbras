@@ -1,0 +1,21 @@
+.productsContainer {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  max-width: 100%;
+}
+
+.productsContent {
+  padding: 0 126px;
+  max-width: 100%;
+}
+
+@media (max-width: 600px) {
+  .productsContent {
+    padding: 0 24px;
+  }
+
+  .productsList {
+    padding-top: 159px;
+  }
+}
