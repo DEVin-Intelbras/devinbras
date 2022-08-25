@@ -10,3 +10,4 @@ export * from "./MenuHamburguer";
 export * from "./Loader";
 export * from "./CardMensagem";
 export * from "./Formulario";
+export * from "./Tabela";
