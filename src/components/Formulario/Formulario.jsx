@@ -1,5 +1,4 @@
 import PropTypes from "prop-types";
-import { Card } from "@components";
 import { useMatchMedia } from "@hooks";
 
 import styles from "./Formulario.module.css";
@@ -12,10 +11,8 @@ const getSizeHelper = (cols) => {
 
 const Container = ({ children }) => {
   return (
-    <div className={styles.formBoundary}>
-      <Card>
-        <div className={styles.formContainer}>{children}</div>
-      </Card>
+    <div className={`${styles.formBoundary} ${styles.card}`}>
+      <div className={styles.formContainer}>{children}</div>
     </div>
   );
 };
@@ -112,7 +109,7 @@ const Componente = ({ children, tamanho = 12 }) => {
       className={styles.formGeneric}
       style={{ width: isMobile ? "100%" : getSizeHelper(tamanho) }}
     >
-      <div>{children}</div>
+      <div className={styles.formGenericContent}>{children}</div>
     </div>
   );
 };

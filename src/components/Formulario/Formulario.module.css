@@ -4,6 +4,13 @@
   margin-top: 2em;
 }
 
+.card {
+  background-color: var(--brand-green-light-02);
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.1);
+  border-radius: 20px;
+  padding: 18px;
+}
+
 .formContainer {
   width: 100%;
   display: flex;
@@ -76,4 +83,8 @@
   display: flex;
   align-items: flex-end;
   padding: 0.65em 0;
+}
+
+.formGenericContent {
+  width: 100%;
 }
