@@ -6,16 +6,18 @@
 }
 
 .productsContent {
-  padding: 0 126px;
-  max-width: 100%;
+  max-width: 960px;
+  margin: 0 auto;
+  margin-top: 2em;
+
+  background-color: var(--brand-green-light-02);
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.1);
+  border-radius: 20px;
+  padding: 18px;
 }
 
 @media (max-width: 600px) {
   .productsContent {
     padding: 0 24px;
-  }
-
-  .productsList {
-    padding-top: 159px;
   }
 }
