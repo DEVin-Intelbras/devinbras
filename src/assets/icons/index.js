@@ -8,3 +8,4 @@ export * from "./Redes";
 export * from "./Seguranca";
 export * from "./Youtube";
 export * from "./NotFound";
+export * from "./Lixeira";
