@@ -9,13 +9,9 @@ const getSizeHelper = (cols) => {
   return `${(100 * cols - 20) / 12}%`;
 };
 
-const Container = ({ children }) => {
-  return (
-    <div className={`${styles.formBoundary} ${styles.card}`}>
-      <div className={styles.formContainer}>{children}</div>
-    </div>
-  );
-};
+const Container = ({ children }) => (
+  <div className={styles.formContainer}>{children}</div>
+);
 
 Container.propTypes = {
   children: PropTypes.node.isRequired,
@@ -45,17 +41,24 @@ Conteudo.propTypes = {
   children: PropTypes.string.isRequired,
 };
 
-const Input = ({ id, label, tamanho = 12, ...otherProps }) => {
+const Input = ({ id, label, tamanho = 12, erro, ...otherProps }) => {
   const { isMobile } = useMatchMedia();
 
   return (
     <label
       htmlFor={id}
-      className={`${styles.fieldSet} ${styles.fieldLabel}`}
+      className={`${styles.fieldSet} ${styles.fieldLabel} ${
+        !!erro && styles.fieldError
+      }`}
       style={{ width: isMobile ? "100%" : getSizeHelper(tamanho) }}
     >
       {label}
-      <input {...otherProps} id={id} className={styles.formInput} />
+      <input
+        {...otherProps}
+        id={id}
+        className={`${styles.formInput} ${!!erro && styles.fieldError}`}
+      />
+      {!!erro && <span>{erro}</span>}
     </label>
   );
 };
@@ -64,6 +67,7 @@ Input.propTypes = {
   id: PropTypes.string.isRequired,
   label: PropTypes.string.isRequired,
   tamanho: PropTypes.number,
+  erro: PropTypes.string,
   otherProps: PropTypes.shape({
     name: PropTypes.string.isRequired,
     type: PropTypes.string,
@@ -71,13 +75,15 @@ Input.propTypes = {
   }),
 };
 
-const TextArea = ({ id, label, value, ...otherProps }) => {
+const TextArea = ({ id, label, value, erro, ...otherProps }) => {
   const { isMobile } = useMatchMedia();
 
   return (
     <label
       htmlFor={id}
-      className={`${styles.fieldSet} ${styles.fieldLabel}`}
+      className={`${styles.fieldSet} ${styles.fieldLabel} ${
+        !!erro && styles.fieldError
+      }`}
       style={{ width: isMobile ? "100%" : getSizeHelper(12) }}
     >
       {label}
@@ -85,9 +91,10 @@ const TextArea = ({ id, label, value, ...otherProps }) => {
         rows={5}
         {...otherProps}
         id={id}
-        className={styles.textAreaInput}
+        className={`${styles.textAreaInput} ${!!erro && styles.fieldError}`}
         value={value}
       ></textarea>
+      {!!erro && <span>{erro}</span>}
     </label>
   );
 };
@@ -96,6 +103,7 @@ TextArea.propTypes = {
   id: PropTypes.string.isRequired,
   label: PropTypes.string.isRequired,
   value: PropTypes.string.isRequired,
+  erro: PropTypes.string,
   otherProps: PropTypes.shape({
     name: PropTypes.string.isRequired,
   }),
