@@ -1,7 +1,7 @@
 import "./assets/css/app.css";
 
 import { Header, Footer } from "@components";
-import { ProductDetails, Products } from "@pages";
+import { Products } from "@pages";
 
 export function App() {
   return (
@@ -9,8 +9,7 @@ export function App() {
       <Header />
 
       <main className="main">
-        {/* <Products /> */}
-        <ProductDetails />
+        <Products />
       </main>
 
       <Footer />
