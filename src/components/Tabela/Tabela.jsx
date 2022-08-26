@@ -4,14 +4,18 @@ import PropTypes from "prop-types";
 import { Lixeira } from "@assets/icons";
 import styles from "./Tabela.module.css";
 
-const Conteudo = ({ children, onApagarLinha }) => {
+const Conteudo = ({ children, onApagarLinha, evenLight = false }) => {
   return (
     <div className={styles.tableBody}>
       {React.Children.map(children, (child, index) => {
         const isEven = (index + 1) % 2 === 0;
         return (
           <>
-            <div className={`${styles.tableRow} ${isEven && styles.evenRow}`}>
+            <div
+              className={`${styles.tableRow} ${
+                isEven && styles[`${evenLight ? "evenRow2" : "evenRow"}`]
+              }`}
+            >
               {child}
               {onApagarLinha && (
                 <div
@@ -34,6 +38,7 @@ const Conteudo = ({ children, onApagarLinha }) => {
 Conteudo.propTypes = {
   children: PropTypes.arrayOf(PropTypes.element),
   onApagarLinha: PropTypes.func,
+  evenLight: PropTypes.bool,
 };
 
 const Linha = ({ children }) => <>{children}</>;
