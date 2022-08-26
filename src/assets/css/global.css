@@ -16,8 +16,11 @@
   --white: #ffffff;
 
   --brand-color-error: #b3192c;
+  --brand-color-error-light: #fbdacf;
   --brand-color-warn: #e69a41;
+  --brand-color-warn-light: #fdf3d9;
   --brand-color-info: #007fbc;
+  --brand-color-info-light: #c9f8fb;
 
   /* Define fonte */
   font-family: "DM Sans", sans-serif;
