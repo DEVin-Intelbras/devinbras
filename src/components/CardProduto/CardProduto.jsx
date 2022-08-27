@@ -1,12 +1,15 @@
 import PropTypes from "prop-types";
+import { useNavigate } from "react-router-dom";
 
 import { Card, ButtonOutline } from "@components";
 
 import styles from "./CardProduto.module.css";
 
 export const CardProduto = ({ produto }) => {
+  const navigate = useNavigate();
+
   const handleOpen = () => {
-    window.open(`https://loja.intelbras.com.br/${produto.details}`, "_blank");
+    navigate(`/produtos/${produto.id}`);
   };
 
   return (
@@ -35,6 +38,7 @@ export const CardProduto = ({ produto }) => {
 
 CardProduto.propTypes = {
   produto: PropTypes.shape({
+    id: PropTypes.number.isRequired,
     image: PropTypes.string.isRequired,
     name: PropTypes.string.isRequired,
     price: PropTypes.number.isRequired,

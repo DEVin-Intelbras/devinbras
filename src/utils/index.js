@@ -1,1 +1,2 @@
-export * from "./formatMoney";
+export { formatMoney } from "./formatMoney";
+export { statusType } from "./statusType";

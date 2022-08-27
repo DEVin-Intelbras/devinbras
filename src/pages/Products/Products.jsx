@@ -1,11 +1,26 @@
-import { Filters, ListaProdutos, Loader, CardMensagem } from "@components";
+import { useNavigate } from "react-router-dom";
+
+import {
+  Filters,
+  ListaProdutos,
+  Loader,
+  CardMensagem,
+  ButtonPrimary,
+} from "@components";
 import { NotFound } from "@assets/icons";
-import { useProdutos, statusType } from "@hooks";
+import { useProdutos } from "@hooks";
 
 import { imageProducts } from "@assets/img";
+import { statusType } from "@utils";
+
 import styles from "./Products.module.css";
+import { useAutenticacao } from "@contexts";
 
 export const Products = () => {
+  const navigate = useNavigate();
+
+  const { isAutenticado } = useAutenticacao();
+
   const {
     status,
     produtos,
@@ -28,7 +43,15 @@ export const Products = () => {
       <Filters aoFiltrar={handleFiltrar} filtroSelecionado={filtro} />
 
       <section className={`${styles.productsContent} ${styles.productsList}`}>
-        <h2 className={styles.productsListTitle}>Produtos</h2>
+        <div className={styles.headerProdutos}>
+          <h2 className={styles.productsListTitle}>Produtos</h2>
+
+          {isAutenticado && (
+            <ButtonPrimary onClick={() => navigate("/produtos/novo")}>
+              Novo Produto
+            </ButtonPrimary>
+          )}
+        </div>
 
         {!produtos.length && status === statusType.isLoading && <Loader />}
 

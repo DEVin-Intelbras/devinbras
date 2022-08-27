@@ -27,13 +27,19 @@
   padding-bottom: 25px;
 }
 
+.headerProdutos {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 40px;
+}
+
 .productsListTitle {
   font-weight: 700;
   font-size: 14px;
   line-height: 21px;
   letter-spacing: 0.08em;
   color: var(--brand-green);
-  margin-bottom: 40px;
 }
 
 .notFound {

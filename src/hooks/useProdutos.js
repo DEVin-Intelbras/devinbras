@@ -1,12 +1,7 @@
 import { useEffect, useState } from "react";
-import { produtoService } from "@service";
 
-export const statusType = {
-  isLoading: "loading",
-  isComplete: "complete",
-  isError: "error",
-  isIdle: "idle",
-};
+import { produtoService } from "@service";
+import { statusType } from "@utils";
 
 export const useProdutos = () => {
   const [produtos, setProdutos] = useState([]);

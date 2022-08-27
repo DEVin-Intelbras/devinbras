@@ -10,7 +10,9 @@
       "@hooks": ["./hooks/index.js"],
       "@pages": ["./pages/index.js"],
       "@service": ["./service/index.js"],
-      "@utils": ["./utils/index.js"]
+      "@utils": ["./utils/index.js"],
+      "@router": ["./router/index.js"],
+      "@contexts": ["./contexts/index.js"]
     }
   },
   "include": ["./src"]

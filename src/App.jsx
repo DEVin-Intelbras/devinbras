@@ -1,18 +1,25 @@
-import "./assets/css/app.css";
+import { BrowserRouter } from "react-router-dom";
 
 import { Header, Footer } from "@components";
-import { Products } from "@pages";
+import { Router } from "@router";
+import { AutenticacaoProvider } from "@contexts";
+
+import "./assets/css/app.css";
 
 export function App() {
   return (
-    <div className="app">
-      <Header />
+    <BrowserRouter>
+      <AutenticacaoProvider>
+        <div className="app">
+          <Header />
 
-      <main className="main">
-        <Products />
-      </main>
+          <main className="main">
+            <Router />
+          </main>
 
-      <Footer />
-    </div>
+          <Footer />
+        </div>
+      </AutenticacaoProvider>
+    </BrowserRouter>
   );
 }
