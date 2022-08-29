@@ -1,12 +1,14 @@
 import { useEffect, useState } from "react";
 
-import { ButtonSecondary, Navbar, MenuHamburguer } from "@/components";
+import { ButtonSecondary, Navbar, MenuHamburguer } from "@components";
+import { useAutenticacao } from "@contexts";
 
 import styles from "./Header.module.css";
 
 export const Header = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [isMobile, setIsMobile] = useState(false);
+  const { isAutenticado, handleLogin, handleLogout } = useAutenticacao();
 
   useEffect(() => {
     const resizeListener = () => {
@@ -30,6 +32,16 @@ export const Header = () => {
 
   const handleClickMenu = () => setIsOpen((prev) => !prev);
 
+  const handleClickAutenticacao = () => {
+    if (isAutenticado) {
+      handleLogout();
+      return;
+    }
+
+    // TODO: Modificar para redirecionar para tela de login
+    handleLogin({ email: "a@a.com", senha: "123" });
+  };
+
   return (
     <header className={styles.containerHeader}>
       <h1 className={styles.headerTitle}>DevInBras</h1>
@@ -45,7 +57,9 @@ export const Header = () => {
         <Navbar />
       </div>
 
-      <ButtonSecondary>Sair</ButtonSecondary>
+      <ButtonSecondary onClick={handleClickAutenticacao}>
+        {isAutenticado ? "Sair" : "Acessar"}
+      </ButtonSecondary>
 
       {isMobile && <MenuHamburguer onClick={handleClickMenu} />}
     </header>

@@ -27,12 +27,28 @@
   padding-bottom: 25px;
 }
 
+.headerProdutos {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 40px;
+}
+
 .productsListTitle {
   font-weight: 700;
   font-size: 14px;
   line-height: 21px;
   letter-spacing: 0.08em;
   color: var(--brand-green);
+}
+
+.notFound {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 400px;
+  width: 100%;
+  margin-bottom: 40px;
 }
 
 @media (max-width: 600px) {

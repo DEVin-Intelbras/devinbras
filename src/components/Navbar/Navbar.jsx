@@ -1,32 +1,55 @@
-/* eslint-disable jsx-a11y/anchor-is-valid */
+import { Link, useLocation } from "react-router-dom";
+
 import styles from "./Navbar.module.css";
 
 export const Navbar = () => {
+  const { pathname } = useLocation();
+
   return (
     <nav>
       <ul className={styles.ulContainer}>
         <li>
-          <a className={styles.link} href="#">
+          <Link
+            className={`${styles.link} ${
+              pathname === "/" && styles.linkActive
+            }`}
+            to="/"
+          >
             Ínicio
-          </a>
+          </Link>
         </li>
 
         <li>
-          <a className={`${styles.link} ${styles.linkActive}`} href="#">
+          <Link
+            className={`${styles.link} ${
+              pathname === "/produtos" && styles.linkActive
+            }`}
+            to="produtos"
+          >
             Produtos
-          </a>
+          </Link>
         </li>
 
         <li>
-          <a className={styles.link} href="#">
+          <Link
+            className={`${styles.link} ${
+              pathname === "/sobre" && styles.linkActive
+            }`}
+            to="sobre"
+          >
             Sobre
-          </a>
+          </Link>
         </li>
 
         <li>
-          <a className={styles.link} href="#">
+          <Link
+            className={`${styles.link} ${
+              pathname === "/contato" && styles.linkActive
+            }`}
+            to="contato"
+          >
             Contato
-          </a>
+          </Link>
         </li>
       </ul>
     </nav>

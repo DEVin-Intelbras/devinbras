@@ -1,37 +1,33 @@
 import { useEffect, useState } from "react";
-import { produtoService } from "@service/api/produtos-http-service";
 
-export const statusType = {
-  isLoading: "loading",
-  isComplete: "complete",
-  isError: "error",
-  isIdle: "idle",
-};
+import { produtoService } from "@service";
+import { statusType } from "@utils";
 
 export const useProdutos = () => {
   const [produtos, setProdutos] = useState([]);
   const [filtro, setFiltro] = useState(null);
   const [status, setStatus] = useState(statusType.isIdle);
+  const [totalProdutos, setTotalProdutos] = useState();
+  const [page, setPage] = useState(1);
 
   useEffect(() => {
     setStatus(statusType.isLoading);
     produtoService
-      .buscarProdutos()
-      .then((dados) => {
-        setProdutos(dados);
+      .buscarProdutos({ category: filtro, page })
+      .then(({ data, totalSize }) => {
+        setTotalProdutos(totalSize);
+        setProdutos((prev) => [...prev, ...data]);
         setStatus(statusType.isComplete);
       })
       .catch((err) => {
         console.log(err);
         setStatus(statusType.isError);
       });
-  }, []);
-
-  const produtosFiltrados = filtro
-    ? produtos.filter((produto) => produto.category === filtro)
-    : produtos;
+  }, [filtro, page]);
 
   const handleFiltrar = (categoria) => {
+    setPage(1);
+    setProdutos([]);
     if (filtro === categoria) {
       setFiltro(null);
     } else {
@@ -39,9 +35,16 @@ export const useProdutos = () => {
     }
   };
 
+  const handleVerMais = () => {
+    setPage((prev) => prev + 1);
+  };
+
   return {
-    produtos: produtosFiltrados,
+    produtos,
     handleFiltrar,
     status,
+    filtro,
+    totalProdutos,
+    handleVerMais,
   };
 };

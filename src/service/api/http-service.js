@@ -1,9 +1,11 @@
 import { HttpError } from "./HttpError";
 
-const URL = "http://localhost:8081";
+const URL = import.meta.env.VITE_BASE_URL_API;
 
 const get = (resource) => {
-  return fetch(URL.concat(resource), { method: "GET" }).then(handleResponse).catch(handleError);
+  return fetch(URL.concat(resource), { method: "GET" })
+    .then(handleResponse)
+    .catch(handleError);
 };
 
 const post = (resource, data) => {
@@ -18,7 +20,13 @@ const post = (resource, data) => {
 
 const handleResponse = (res) => {
   if (res.ok) {
-    return res.json();
+    const data = res
+      .json()
+      .then((data) => ({
+        data,
+        totalSize: parseInt(res.headers.get("X-Total-Count")),
+      }));
+    return data;
   } else {
     throw new HttpError(res.status, "Não foi possível completar a requisição");
   }
