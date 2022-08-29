@@ -1,0 +1,1 @@
+export { CardMensagem } from "./CardMensagem";

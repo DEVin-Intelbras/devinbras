@@ -1,1 +1,1 @@
-export * from './ListaProdutos';
+export { ListaProdutos } from "./ListaProdutos";

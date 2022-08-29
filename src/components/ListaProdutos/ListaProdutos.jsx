@@ -1,9 +1,16 @@
-import { produtos } from '@/service/produtos';
-import { ButtonOutline, CardProduto } from '@/components';
+import PropTypes from "prop-types";
+import { ButtonOutline, CardProduto } from "@components";
 
-import styles from './ListaProdutos.module.css';
+import styles from "./ListaProdutos.module.css";
 
-export const ListaProdutos = () => {
+export const ListaProdutos = ({
+  produtos,
+  totalProdutos,
+  onVerMais,
+  isLoadingVerMais,
+}) => {
+  const disabled = produtos.length >= totalProdutos || isLoadingVerMais;
+
   return (
     <>
       <ul className={styles.ul}>
@@ -13,8 +20,30 @@ export const ListaProdutos = () => {
       </ul>
 
       <div className={styles.button}>
-        <ButtonOutline fullWidth>Mostrar mais...</ButtonOutline>
+        <ButtonOutline
+          fullWidth
+          disabled={disabled}
+          onClick={onVerMais}
+          isLoading={isLoadingVerMais}
+        >
+          Mostrar mais...
+        </ButtonOutline>
       </div>
     </>
   );
+};
+
+ListaProdutos.propTypes = {
+  produtos: PropTypes.arrayOf(
+    PropTypes.shape({
+      id: PropTypes.number.isRequired,
+      name: PropTypes.string.isRequired,
+      price: PropTypes.number.isRequired,
+      image: PropTypes.string.isRequired,
+      details: PropTypes.string.isRequired,
+    }),
+  ),
+  totalProdutos: PropTypes.number.isRequired,
+  onVerMais: PropTypes.func.isRequired,
+  isLoadingVerMais: PropTypes.bool,
 };

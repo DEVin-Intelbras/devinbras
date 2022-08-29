@@ -1,0 +1,56 @@
+.tableBody {
+  width: 100%;
+  border: 1px solid var(--brand-green-light);
+  border-radius: 2.5px;
+}
+
+.tableRow {
+  width: 100%;
+  background-color: var(--white);
+  display: flex;
+  flex-direction: row;
+  position: relative;
+  align-items: center;
+}
+
+.evenRow {
+  background-color: var(--brand-green-light);
+}
+
+.evenRow2 {
+  background-color: var(--brand-green-light-02);
+}
+
+.dismissable {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  width: 48px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: var(--brand-green);
+  cursor: pointer;
+  opacity: 0;
+}
+
+.tableRow:hover .dismissable {
+  opacity: 1;
+}
+
+.tableRow:hover .dismissable:hover {
+  background-color: var(--brand-green);
+  opacity: 0.75;
+}
+
+.tableCell {
+  width: 100%;
+  padding: 1.5em;
+  font-size: 0.85rem;
+  letter-spacing: 0.08em;
+}
+
+.featuredCell {
+  font-weight: 700;
+}

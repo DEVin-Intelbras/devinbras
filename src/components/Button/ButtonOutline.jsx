@@ -1,12 +1,30 @@
-import PropTypes from 'prop-types';
+import PropTypes from "prop-types";
 
-import styles from './Button.module.css';
+import { Loader, loaderSize } from "@components";
 
-export const ButtonOutline = ({ children, fullWidth = false }) => {
+import styles from "./Button.module.css";
+
+export const ButtonOutline = ({
+  children,
+  onClick,
+  fullWidth = false,
+  disabled = false,
+  isLoading = false,
+}) => {
   return (
     <button
-      className={`${styles.button} ${styles.buttonOutline} ${fullWidth ? styles.fullWidth : ''}`}
+      onClick={onClick}
+      disabled={disabled}
+      className={`${styles.button} ${styles.buttonOutline} ${
+        fullWidth ? styles.fullWidth : ""
+      }`}
     >
+      {isLoading && (
+        <div>
+          <Loader size={loaderSize.small} />
+        </div>
+      )}
+
       {children}
     </button>
   );
@@ -15,4 +33,7 @@ export const ButtonOutline = ({ children, fullWidth = false }) => {
 ButtonOutline.propTypes = {
   children: PropTypes.node.isRequired,
   fullWidth: PropTypes.bool,
+  onClick: PropTypes.func,
+  disabled: PropTypes.bool,
+  isLoading: PropTypes.bool,
 };

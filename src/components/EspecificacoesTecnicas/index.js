@@ -1,0 +1,1 @@
+export { EspecificacoesTecnicas } from "./EspecificacoesTecnicas";

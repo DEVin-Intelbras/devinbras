@@ -1,0 +1,105 @@
+.formContainer {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.formHeadingContainer {
+  margin: 1.25em;
+  width: 100%;
+}
+
+.formHeading {
+  text-align: center;
+  font-size: 1.25em;
+  color: var(--brand-green);
+}
+
+.formContent {
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+  gap: 15px;
+}
+
+.fieldSet {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 1em;
+}
+
+.fieldLabel {
+  font-size: 0.65rem;
+  font-weight: normal;
+  color: var(--brand-green);
+}
+
+.formInput {
+  width: 100%;
+  padding: 0.65em;
+  background-color: var(--brand-green-light);
+  border: 1px solid var(--brand-green);
+  border-radius: 2.5px;
+}
+
+.formInput::placeholder {
+  color: #49505780;
+  font-size: 0.75rem;
+  font-family: "DM Sans", sans-serif;
+}
+
+.formInput:focus {
+  outline-color: var(--brand-green);
+}
+
+.textAreaInput {
+  width: 100%;
+  resize: none;
+  padding: 0.65em;
+  background-color: var(--brand-green-light);
+  border: 1px solid var(--brand-green);
+  border-radius: 2.5px;
+  font-family: "DM Sans", sans-serif;
+}
+
+.textAreaInput::placeholder {
+  color: #49505780;
+  font-size: 0.75rem;
+  font-family: "DM Sans", sans-serif;
+}
+
+.textAreaInput:focus {
+  outline-color: var(--brand-green);
+}
+
+.fieldError {
+  color: var(--brand-color-error);
+  font-weight: 700;
+}
+
+.fieldError span {
+  font-weight: 300;
+}
+
+.fieldError input,
+.fieldError textarea {
+  background-color: var(--brand-color-error-light);
+  border: 1px solid var(--brand-color-error);
+}
+
+.fieldError input:focus,
+.fieldError textarea:focus {
+  outline-color: var(--brand-color-error);
+}
+
+.formGeneric {
+  width: 100%;
+  display: flex;
+  align-items: flex-end;
+  padding: 0.65em 0;
+}
+
+.formGenericContent {
+  width: 100%;
+}
