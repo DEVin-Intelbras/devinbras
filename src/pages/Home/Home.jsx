@@ -1,3 +1,9 @@
+import { UnderConstruction } from "@components";
+
 export const Home = () => {
-  return <div>Em construção</div>;
+  return (
+    <div>
+      <UnderConstruction />
+    </div>
+  );
 };

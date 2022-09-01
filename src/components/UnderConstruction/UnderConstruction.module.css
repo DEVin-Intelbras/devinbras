@@ -1,0 +1,15 @@
+.container {
+  width: 380px;
+  margin: 0 auto;
+  text-align: center;
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: var(--brand-green);
+  position: relative;
+}
+
+.text {
+  position: absolute;
+  bottom: 40px;
+  left: 100px;
+}

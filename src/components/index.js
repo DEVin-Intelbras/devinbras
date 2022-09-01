@@ -13,3 +13,4 @@ export * from "./Formulario";
 export * from "./Tabela";
 export * from "./ImageMini";
 export * from "./EspecificacoesTecnicas";
+export * from "./UnderConstruction";
