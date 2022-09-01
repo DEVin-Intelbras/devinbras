@@ -3,7 +3,6 @@ import { useState } from "react";
 import styles from "./NewProduct.module.css";
 
 export const NewProduct = () => {
-  // eslint-disable-next-line no-unused-vars
   const [specList, setSpecList] = useState([]);
 
   return (
@@ -30,7 +29,7 @@ export const NewProduct = () => {
         </div>
         <div className={styles.formRow}>
           <Input label="Especificação" name="specs.titulo" placeholder="Informe o título" />
-          <Input label="Valor" name="specs.valor" placeholder="Informe o valor" />
+          <Input label="Valor" name="specs.descricao" placeholder="Informe o valor" />
           <div className={styles.button}>
             <ButtonOutline fullWidth>Adicionar</ButtonOutline>
           </div>

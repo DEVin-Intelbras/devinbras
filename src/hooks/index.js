@@ -1,3 +1,2 @@
-export * from "./useProdutos";
+export * from "./useProducts";
 export * from "./useMatchMedia";
-export * from "./useProduto";
