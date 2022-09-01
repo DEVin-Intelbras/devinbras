@@ -1,23 +1,45 @@
+import { useEffect, useState } from "react";
 import PropTypes from "prop-types";
-import { useState } from "react";
+
+import { autenticacaoService } from "@service";
+import { obterToken, removerToken, salvarToken, statusType } from "@utils";
+
 import { AutenticacaoContext } from "./AutenticacaoContext";
 
 export const AutenticacaoProvider = ({ children }) => {
-  const [usuario, setUsuario] = useState(null);
+  const [isAutenticado, setIsAutenticado] = useState(false);
+  const [status, setStatus] = useState(statusType.isIdle);
+
+  useEffect(() => {
+    const token = obterToken();
+    setIsAutenticado(!!token);
+  }, []);
 
   const handleLogin = ({ email, senha }) => {
-    // TODO: Adicionar chamada a api
-    console.log(email, senha);
-    setUsuario({ nome: "Thais", email });
+    setStatus(statusType.isLoading);
+
+    autenticacaoService
+      .efetuarLogin({ email, senha })
+      .then(({ data }) => {
+        salvarToken(data.access_token);
+        setIsAutenticado(true);
+        setStatus(statusType.isComplete);
+      })
+      .catch(() => {
+        setIsAutenticado(false);
+        removerToken();
+        setStatus(statusType.isError);
+      });
   };
 
   const handleLogout = () => {
-    setUsuario(null);
+    removerToken();
+    setIsAutenticado(false);
   };
 
   return (
     <AutenticacaoContext.Provider
-      value={{ isAutenticado: !!usuario, handleLogin, handleLogout }}
+      value={{ isAutenticado, status, handleLogin, handleLogout }}
     >
       {children}
     </AutenticacaoContext.Provider>
