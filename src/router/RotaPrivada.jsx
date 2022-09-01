@@ -6,7 +6,7 @@ import { useAutenticacao } from "@contexts";
 export const RotaPrivada = ({ children }) => {
   const { isAutenticado } = useAutenticacao();
 
-  return isAutenticado ? children : <Navigate to="/" />;
+  return isAutenticado ? children : <Navigate to="/login" />;
 };
 
 RotaPrivada.propTypes = {

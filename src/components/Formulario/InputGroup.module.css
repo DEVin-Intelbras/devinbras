@@ -1,0 +1,29 @@
+.fieldSet {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  margin: 0 0.5em;
+  color: var(--brand-green);
+}
+
+.label {
+  font-size: 0.65rem;
+  font-weight: inherit;
+  color: inherit;
+}
+
+.error {
+  color: var(--brand-color-error);
+  font-weight: 700;
+}
+
+.message {
+  font-size: 0.75rem;
+  font-weight: 300;
+}
+
+@media (max-width: 600px) {
+  .fieldSet {
+    margin: 0.25em 0;
+  }
+}

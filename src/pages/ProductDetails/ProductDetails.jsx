@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 
 import {
@@ -9,16 +9,33 @@ import {
   CardMensagem,
 } from "@components";
 import { formatMoney, statusType } from "@utils";
-import { useProduto } from "@hooks";
 
 import styles from "./ProductDetails.module.css";
+const URL = import.meta.env.VITE_BASE_URL_API;
 
 export const ProductDetails = () => {
   const { id } = useParams();
 
   const baseUrl = import.meta.env.VITE_BASE_URL;
   const [selectedImageIndex, setSelectedImageIndex] = useState(0);
-  const { produto, status } = useProduto({ id });
+  const [produto, setProduto] = useState(null);
+  const [status, setStatus] = useState(statusType.isIdle);
+
+  useEffect(() => {
+    setStatus(statusType.isLoading);
+
+    fetch(`${URL}/products/${id}`, { method: "GET" })
+      .then((res) => res.json())
+      .then((data) => {
+        console.log(data);
+        setProduto(data);
+        setStatus(statusType.isComplete);
+      })
+      .catch((err) => {
+        console.error(err);
+        setStatus(statusType.isError);
+      });
+  }, [id]);
 
   const handleSelectedImage = (index) => {
     setSelectedImageIndex(index);

@@ -1,0 +1,32 @@
+.input {
+  width: 100%;
+  padding: 0.75em;
+  background-color: var(--brand-green-light);
+  border: 1px solid var(--brand-green);
+  border-radius: 2.5px;
+  font-size: 0.75rem;
+  font-family: "DM Sans", sans-serif;
+}
+
+.input::placeholder {
+  color: #49505780;
+  font-family: inherit;
+}
+
+.input:focus {
+  outline-color: var(--brand-green);
+}
+
+.error {
+  border-color: var(--brand-color-error);
+  color: var(--brand-color-error);
+  background: #b3192b15;
+}
+
+.input.error::placeholder {
+  color: #b3192b75;
+}
+
+.input.error:focus {
+  outline-color: var(--brand-color-error);
+}

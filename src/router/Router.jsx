@@ -7,6 +7,7 @@ import {
   NewProduct,
   ProductDetails,
   Products,
+  Login,
 } from "@pages";
 import { RotaPrivada } from "./RotaPrivada";
 
@@ -26,7 +27,7 @@ export const Router = () => {
       <Route path="/produtos/:id" element={<ProductDetails />} />
       <Route path="/sobre" element={<About />} />
       <Route path="/contato" element={<Contacts />} />
-      <Route path="/login" element={<h1>Login</h1>} />
+      <Route path="/login" element={<Login />} />
       <Route path="/cadastro" element={<h1>Cadastro</h1>} />
       <Route path="*" element={<Navigate to="/" replace={true} />} />
     </Routes>

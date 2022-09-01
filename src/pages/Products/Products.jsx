@@ -1,3 +1,4 @@
+import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 
 import {
@@ -8,7 +9,6 @@ import {
   ButtonPrimary,
 } from "@components";
 import { NotFound } from "@assets/icons";
-import { useProdutos } from "@hooks";
 
 import { imageProducts } from "@assets/img";
 import { statusType } from "@utils";
@@ -16,19 +16,58 @@ import { statusType } from "@utils";
 import styles from "./Products.module.css";
 import { useAutenticacao } from "@contexts";
 
+const URL = import.meta.env.VITE_BASE_URL_API;
+const LIMIT = 9;
+
 export const Products = () => {
   const navigate = useNavigate();
 
-  const { isAutenticado } = useAutenticacao();
+  const [produtos, setProdutos] = useState([]);
+  const [filtro, setFiltro] = useState(null);
+  const [status, setStatus] = useState(statusType.isIdle);
+  const [totalProdutos, setTotalProdutos] = useState();
+  const [page, setPage] = useState(1);
 
-  const {
-    status,
-    produtos,
-    handleFiltrar,
-    filtro,
-    totalProdutos,
-    handleVerMais,
-  } = useProdutos();
+  useEffect(() => {
+    setStatus(statusType.isLoading);
+    const searchQuery = filtro ? `category=${filtro}&` : "";
+    fetch(
+      `${URL}/products?${searchQuery}&_sort=name&_page=${page}&_limit=${LIMIT})`,
+      { method: "GET" },
+    )
+      .then((res) => {
+        return res.json().then((data) => ({
+          data,
+          totalProdutos: res.headers.get("X-Total-Count"),
+        }));
+      })
+      .then(({ data, totalProdutos }) => {
+        console.log(data);
+        setTotalProdutos(totalProdutos);
+        setProdutos((prev) => [...prev, ...data]);
+        setStatus(statusType.isComplete);
+      })
+      .catch((err) => {
+        console.log(err);
+        setStatus(statusType.isError);
+      });
+  }, [filtro, page]);
+
+  const handleFiltrar = (categoria) => {
+    setPage(1);
+    setProdutos([]);
+    if (filtro === categoria) {
+      setFiltro(null);
+    } else {
+      setFiltro(categoria);
+    }
+  };
+
+  const handleVerMais = () => {
+    setPage((prev) => prev + 1);
+  };
+
+  const { isAutenticado } = useAutenticacao();
 
   return (
     <div className={styles.productsContainer}>

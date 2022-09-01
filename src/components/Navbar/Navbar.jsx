@@ -1,9 +1,11 @@
+import { useAutenticacao } from "@contexts";
 import { Link, useLocation } from "react-router-dom";
 
 import styles from "./Navbar.module.css";
 
 export const Navbar = () => {
   const { pathname } = useLocation();
+  const { isAutenticado } = useAutenticacao();
 
   return (
     <nav>
@@ -29,6 +31,19 @@ export const Navbar = () => {
             Produtos
           </Link>
         </li>
+
+        {isAutenticado && (
+          <li>
+            <Link
+              className={`${styles.link} ${
+                pathname === "/produtos/novo" && styles.linkActive
+              }`}
+              to="/produtos/novo"
+            >
+              Novo produto
+            </Link>
+          </li>
+        )}
 
         <li>
           <Link

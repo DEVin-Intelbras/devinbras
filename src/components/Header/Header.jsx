@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 import { ButtonSecondary, Navbar, MenuHamburguer } from "@components";
 import { useAutenticacao } from "@contexts";
@@ -6,6 +7,8 @@ import { useAutenticacao } from "@contexts";
 import styles from "./Header.module.css";
 
 export const Header = () => {
+  const navigate = useNavigate();
+
   const [isOpen, setIsOpen] = useState(false);
   const [isMobile, setIsMobile] = useState(false);
   const { isAutenticado, handleLogin, handleLogout } = useAutenticacao();
@@ -39,7 +42,7 @@ export const Header = () => {
     }
 
     // TODO: Modificar para redirecionar para tela de login
-    handleLogin({ email: "a@a.com", senha: "123" });
+    navigate("/login");
   };
 
   return (
