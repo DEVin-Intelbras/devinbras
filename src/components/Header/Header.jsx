@@ -11,7 +11,7 @@ export const Header = () => {
 
   const [isOpen, setIsOpen] = useState(false);
   const [isMobile, setIsMobile] = useState(false);
-  const { isAutenticado, handleLogin, handleLogout } = useAutenticacao();
+  const { isAutenticado, handleLogout } = useAutenticacao();
 
   useEffect(() => {
     const resizeListener = () => {
