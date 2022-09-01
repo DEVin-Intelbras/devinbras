@@ -8,34 +8,19 @@ import {
   Loader,
   CardMensagem,
 } from "@components";
+
+import { useProductDetails } from "@hooks";
 import { formatMoney, statusType } from "@utils";
 
 import styles from "./ProductDetails.module.css";
-const URL = import.meta.env.VITE_BASE_URL_API;
+
+const BASE_URL = import.meta.env.VITE_BASE_URL;
 
 export const ProductDetails = () => {
   const { id } = useParams();
-
-  const baseUrl = import.meta.env.VITE_BASE_URL;
   const [selectedImageIndex, setSelectedImageIndex] = useState(0);
-  const [produto, setProduto] = useState(null);
-  const [status, setStatus] = useState(statusType.isIdle);
 
-  useEffect(() => {
-    setStatus(statusType.isLoading);
-
-    fetch(`${URL}/products/${id}`, { method: "GET" })
-      .then((res) => res.json())
-      .then((data) => {
-        console.log(data);
-        setProduto(data);
-        setStatus(statusType.isComplete);
-      })
-      .catch((err) => {
-        console.error(err);
-        setStatus(statusType.isError);
-      });
-  }, [id]);
+  const { status, produto } = useProductDetails({ productId: id });
 
   const handleSelectedImage = (index) => {
     setSelectedImageIndex(index);
@@ -63,7 +48,7 @@ export const ProductDetails = () => {
               <div>
                 <img
                   className={styles.imageMain}
-                  src={`${baseUrl}/assets/products/${produto.imageDetails[selectedImageIndex]}`}
+                  src={`${BASE_URL}/assets/products/${produto.imageDetails[selectedImageIndex]}`}
                   alt="Produto"
                 />
               </div>
@@ -73,9 +58,7 @@ export const ProductDetails = () => {
 
                 <p className={styles.description}>{produto.description}</p>
 
-                <strong className={styles.price}>
-                  {formatMoney(produto.price)}
-                </strong>
+                <strong className={styles.price}>{formatMoney(produto.price)}</strong>
 
                 <ButtonPrimary>Adicionar ao carrinho</ButtonPrimary>
               </div>
@@ -84,13 +67,9 @@ export const ProductDetails = () => {
 
           <section className={styles.content}>
             <div className={styles.containerEspecificacoes}>
-              <h2 className={styles.titleEspecificacoes}>
-                Especificações técnicas
-              </h2>
+              <h2 className={styles.titleEspecificacoes}>Especificações técnicas</h2>
 
-              <EspecificacoesTecnicas
-                especificacoes={produto.technicalSpecifications}
-              />
+              <EspecificacoesTecnicas especificacoes={produto.technicalSpecifications} />
             </div>
           </section>
         </>
@@ -98,11 +77,7 @@ export const ProductDetails = () => {
 
       {status === statusType.isError && (
         <div className={styles.content}>
-          <CardMensagem
-            titulo="Erro!"
-            mensagem="Erro ao carregar o produto"
-            tipo="erro"
-          />
+          <CardMensagem titulo="Erro!" mensagem="Erro ao carregar o produto" tipo="erro" />
         </div>
       )}
     </div>
