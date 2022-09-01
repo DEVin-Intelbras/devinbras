@@ -1,4 +1,3 @@
-import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 
 import { Filters, ListaProdutos, Loader, CardMensagem, ButtonPrimary } from "@components";
