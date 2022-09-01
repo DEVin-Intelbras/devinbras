@@ -1,7 +1,11 @@
 import { ButtonOutline, Tabela, Form, Input, TextArea } from "@components";
+import { useState } from "react";
 import styles from "./NewProduct.module.css";
 
 export const NewProduct = () => {
+  // eslint-disable-next-line no-unused-vars
+  const [specList, setSpecList] = useState([]);
+
   return (
     <section className={styles.container}>
       <header className={styles.title}>
@@ -31,22 +35,20 @@ export const NewProduct = () => {
             <ButtonOutline fullWidth>Adicionar</ButtonOutline>
           </div>
         </div>
-        <div className={styles.table}>
-          <Tabela.Conteudo
-            onApagarLinha={(i) => {
-              console.log(i);
-            }}
-          >
-            <Tabela.Linha>
-              <Tabela.Celula destaque>Frequencia de operação</Tabela.Celula>
-              <Tabela.Celula>50/60hz</Tabela.Celula>
-            </Tabela.Linha>
-            <Tabela.Linha>
-              <Tabela.Celula destaque>Altura do produto</Tabela.Celula>
-              <Tabela.Celula>12 cm</Tabela.Celula>
-            </Tabela.Linha>
-          </Tabela.Conteudo>
-        </div>
+        {specList.length === 0 ? (
+          <span className={styles.noSpecs}>Nenhuma especificação cadastrada</span>
+        ) : (
+          <div className={styles.table}>
+            <Tabela.Conteudo onApagarLinha={console.log}>
+              {specList.map((spec, index) => (
+                <Tabela.Linha key={index}>
+                  <Tabela.Celula destaque>{spec.titulo}</Tabela.Celula>
+                  <Tabela.Celula>{spec.descricao}</Tabela.Celula>
+                </Tabela.Linha>
+              ))}
+            </Tabela.Conteudo>
+          </div>
+        )}
         <ButtonOutline>Salvar</ButtonOutline>
       </Form>
     </section>
