@@ -1,5 +1,6 @@
 import { statusType } from "@utils";
 import { useEffect, useState } from "react";
+import { httpService } from "@service";
 
 const URL = import.meta.env.VITE_BASE_URL_API;
 
@@ -10,10 +11,10 @@ export const useProductDetails = ({ productId }) => {
   useEffect(() => {
     setStatus(statusType.isLoading);
 
-    fetch(`${URL}/products/${productId}`, { method: "GET" })
-      .then((res) => res.json())
-      .then((data) => {
-        setProduto(data);
+    httpService
+      .buscar(`${URL}/products/${productId}`)
+      .then((resultado) => {
+        setProduto(resultado.data);
         setStatus(statusType.isComplete);
       })
       .catch((err) => {
