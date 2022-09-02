@@ -1,10 +1,7 @@
 import { useEffect, useState } from "react";
 
 import { statusType } from "@utils";
-import { httpService } from "@service";
-
-const URL = import.meta.env.VITE_BASE_URL_API;
-const LIMIT = 9;
+import { buscarProdutos } from "@service";
 
 export const useProducts = () => {
   const [produtos, setProdutos] = useState([]);
@@ -15,9 +12,8 @@ export const useProducts = () => {
 
   useEffect(() => {
     setStatus(statusType.isLoading);
-    const searchQuery = filtro ? `category=${filtro}&` : "";
-    httpService
-      .buscar(`${URL}/products?${searchQuery}&_sort=name&_page=${page}&_limit=${LIMIT})`)
+
+    buscarProdutos(page, filtro)
       .then((resultado) => {
         setTotalProdutos(resultado.totalCount);
         setProdutos((prev) => [...prev, ...resultado.data]);
