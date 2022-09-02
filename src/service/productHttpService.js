@@ -11,4 +11,7 @@ export const buscarProdutos = (pagina, filtro) => {
   // http://localhost:8081/products?category=redes&_sort=name&_page=1&_limit=9
 };
 
-export const buscarProduto = (produtoId) => {};
+export const buscarProduto = (produtoId) => {
+  return httpService.buscar(`${URL + PRODUCTS}/${produtoId}`);
+  // http://localhost:8081/products/10
+};
