@@ -10,14 +10,14 @@ export const ButtonOutline = ({
   fullWidth = false,
   disabled = false,
   isLoading = false,
+  type = "submit",
 }) => {
   return (
     <button
+      type={type}
       onClick={onClick}
       disabled={disabled}
-      className={`${styles.button} ${styles.buttonOutline} ${
-        fullWidth ? styles.fullWidth : ""
-      }`}
+      className={`${styles.button} ${styles.buttonOutline} ${fullWidth ? styles.fullWidth : ""}`}
     >
       {isLoading && (
         <div>
@@ -36,4 +36,5 @@ ButtonOutline.propTypes = {
   onClick: PropTypes.func,
   disabled: PropTypes.bool,
   isLoading: PropTypes.bool,
+  type: PropTypes.oneOf(["submit", "button"]),
 };

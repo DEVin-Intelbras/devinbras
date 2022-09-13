@@ -1,28 +1,29 @@
-import { useForm } from "react-hook-form";
+import React from "react";
 import PropTypes from "prop-types";
-import styles from "./InputBase.module.css";
+
 import { InputGroup } from "./InputGroup";
 
-const MAX_ROWS = 5;
+import styles from "./InputBase.module.css";
 
-export const TextArea = (props) => {
-  const { name } = props;
-  const { register, formState } = useForm();
-
-  const erro = formState.errors[name]?.message;
+export const TextArea = React.forwardRef((props, ref) => {
+  const { erro } = props;
 
   return (
-    <InputGroup {...props} name={name} erro={erro}>
+    <InputGroup label={props.label} erro={erro}>
       <textarea
         className={`${styles.input} ${!!erro && styles.error}`}
         style={{ resize: "none" }}
-        rows={MAX_ROWS}
-        {...register(name)}
+        rows={5}
+        {...props}
+        ref={ref}
       />
     </InputGroup>
   );
-};
+});
+
+TextArea.displayName = "Input";
 
 TextArea.propTypes = {
-  name: PropTypes.string.isRequired,
+  label: PropTypes.string,
+  erro: PropTypes.string,
 };

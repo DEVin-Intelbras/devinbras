@@ -1,22 +1,22 @@
+import { useEffect } from "react";
 import { useForm } from "react-hook-form";
-
-import { ButtonOutline, Form, Input } from "@components";
-import { useAutenticacao } from "@contexts";
-import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
+
+import { useAutenticacao } from "@contexts";
+import { ButtonOutline, Form, Input } from "@components";
+
 import styles from "./Login.module.css";
 
-// michael.nascimento@edu.sc.senai.br
+const defaultValues = { usuario: "michael.nascimento@edu.sc.senai.br", senha: "123456" };
 
 export const Login = () => {
-  const [login, setLogin] = useState({});
   const navigate = useNavigate();
-  const { register, handleSubmit } = useForm();
-
   const { isAutenticado, handleLogin } = useAutenticacao();
 
+  const { register, handleSubmit, formState } = useForm({ defaultValues });
+  const { errors } = formState;
+
   const handleClickAutenticacao = (dados) => {
-    console.log(dados);
     handleLogin(dados);
   };
 
@@ -34,12 +34,21 @@ export const Login = () => {
       <Form onSubmit={handleSubmit(handleClickAutenticacao)}>
         <div className={styles.formRow}>
           <Input
-            register={register}
+            {...register("usuario", { required: "Preenchimento obrigatório" })}
+            erro={errors.usuario?.message}
+            defaultValue={defaultValues.usuario}
             name="usuario"
             label="Usuário"
             placeholder="Informe o usuário"
           />
-          <Input register={register} name="senha" label="Senha" placeholder="Informe a senha" />
+          <Input
+            {...register("senha", { required: "Preenchimento obrigatório" })}
+            erro={errors.senha?.message}
+            defaultValue={defaultValues.senha}
+            name="senha"
+            label="Senha"
+            placeholder="Informe a senha"
+          />
         </div>
         <div className={styles.button}>
           <ButtonOutline fullWidth>Entrar</ButtonOutline>

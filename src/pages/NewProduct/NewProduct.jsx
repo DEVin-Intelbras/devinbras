@@ -1,24 +1,17 @@
 import { useForm } from "react-hook-form";
-import { ButtonOutline, Tabela, Form, Input, TextArea } from "@components";
-import { useState } from "react";
+import { ButtonOutline, Form, Input, TextArea } from "@components";
 import styles from "./NewProduct.module.css";
+import { FormEspecificacoes } from "./FormEspecificacoes";
 
+const defaultValues = { especificacoes: [] };
 export const NewProduct = () => {
-  const [specList, setSpecList] = useState([]);
+  const formMethods = useForm({ defaultValues });
 
-  const { handleSubmit, register, formState, setValue, getValues, resetField } = useForm();
-  const handleRemoveSpec = (indx) => {
-    setSpecList((pSpecs) => pSpecs.filter((x, indice) => indice !== indx));
-  };
-  const handleAddSpec = () => {
-    const addedSpec = getValues("specs");
-    setSpecList((pList) => [...pList, addedSpec]);
-    resetField("specs");
-  };
+  const { handleSubmit, register, formState } = formMethods;
+  const { errors } = formState;
 
   const onSubmitForm = (dados) => {
-    setValue("especificacoes", specList);
-    //  salvarNovoProduto(dados);
+    console.log(dados);
   };
 
   return (
@@ -29,49 +22,43 @@ export const NewProduct = () => {
       <Form onSubmit={handleSubmit(onSubmitForm)}>
         <div className={styles.formRow}>
           <Input
-            register={register}
-            formState={formState}
-            name="nome"
+            {...register("nome")}
+            erro={errors.nome?.message}
             label="Nome"
             placeholder="Informe o nome"
           />
           <Input
-            register={register}
-            formState={formState}
+            {...register("valor")}
+            erro={errors.nome?.message}
             label="Valor"
-            name="valor"
             placeholder="Informe o valor"
           />
         </div>
         <div className={styles.formRow}>
           <Input
-            register={register}
-            formState={formState}
+            {...register("url1")}
+            erro={errors.url1?.message}
             label="Url Imagem 1"
-            name="url1"
             placeholder="Informe a url da imagem"
           />
           <Input
-            register={register}
-            formState={formState}
+            {...register("url2")}
+            erro={errors.url2?.message}
             label="Url Imagem 2"
-            name="url2"
             placeholder="Informe a url da imagem"
           />
           <Input
-            register={register}
-            formState={formState}
+            {...register("url3")}
+            erro={errors.url3?.message}
             label="Url Imagem 3"
-            name="url3"
             placeholder="Informe a url da imagem"
           />
         </div>
         <div className={styles.formRow}>
           <TextArea
-            register={register}
-            formState={formState}
+            {...register("descricao")}
+            erro={errors.descricao?.message}
             label="Descrição"
-            name="descricao"
             placeholder="Informe a descrição "
           />
         </div>
@@ -79,42 +66,8 @@ export const NewProduct = () => {
         <div className={styles.title}>
           <h3>Especificações</h3>
         </div>
-        <div className={styles.formRow}>
-          <Input
-            register={register}
-            formState={formState}
-            label="Especificação"
-            name="specs.titulo"
-            placeholder="Informe o título"
-          />
-          <Input
-            register={register}
-            formState={formState}
-            label="Valor"
-            name="specs.descricao"
-            placeholder="Informe o valor"
-          />
-          <div className={styles.button}>
-            <ButtonOutline fullWidth onClick={handleAddSpec}>
-              Adicionar
-            </ButtonOutline>
-          </div>
-        </div>
-        {specList.length === 0 ? (
-          <span className={styles.noSpecs}>Nenhuma especificação cadastrada</span>
-        ) : (
-          <div className={styles.table}>
-            <Tabela.Conteudo onApagarLinha={handleRemoveSpec}>
-              {specList.map((spec, index) => (
-                <Tabela.Linha key={index}>
-                  <Tabela.Celula destaque>{spec.titulo}</Tabela.Celula>
-                  <Tabela.Celula>{spec.descricao}</Tabela.Celula>
-                </Tabela.Linha>
-              ))}
-            </Tabela.Conteudo>
-          </div>
-        )}
-        <ButtonOutline>Salvar</ButtonOutline>
+        <FormEspecificacoes form={formMethods} />
+        <ButtonOutline type="submit">Salvar</ButtonOutline>
       </Form>
     </section>
   );
